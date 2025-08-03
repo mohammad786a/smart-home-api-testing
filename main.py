@@ -64,3 +64,9 @@ def get_device_by_id(device_id: int):
             return device
     raise HTTPException(status_code=404, detail="Device not found")
 
+devices: List[Device] = []
+
+@app.post("/devices")
+def add_device(device: Device):
+    devices.append(device)
+    return {"message": "Device added successfully"}
