@@ -52,3 +52,15 @@ def delete_device(device_id: int):
             del devices[i]
             return {"message": "Device deleted"}
     raise HTTPException(status_code=404, detail="Device not found")
+
+
+
+from fastapi import HTTPException
+
+@app.get("/devices/{device_id}")
+def get_device_by_id(device_id: int):
+    for device in devices:
+        if device["id"] == device_id:
+            return device
+    raise HTTPException(status_code=404, detail="Device not found")
+
