@@ -1,6 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
+
+app = FastAPI()  # ✅ First define the app
+
+@app.get("/")    # ✅ Then add routes below
+def read_root():
+    return {"message": "Smart Home API is running"}
+
 @app.get("/")
 def read_root():
     return {"message": "Smart Home API is running"}
